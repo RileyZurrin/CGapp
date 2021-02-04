@@ -1,0 +1,3 @@
+title=CG Coeffecients
+author=Riley
+orientation=portrait
