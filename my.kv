@@ -1,0 +1,542 @@
+<SmoothButton@Button>:
+    background_normal: ""
+    background_color: (0,0,0,0)
+    back_color: (0,0,0,1)
+    border_radius: 18
+    color: self.back_color
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        Line:
+            rounded_rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1], self.border_radius)
+            width: 2
+
+
+
+<MainWindow>:
+    name: "main"
+
+    FloatLayout:
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "Clebsch-Gordon Coefficients"
+            pos_hint: {"right":1,"top":1}
+            size_hint: 1, 0.1
+            font_size: self.width*0.07
+            color: (0.9, 0.9, 0.91, 1)
+            canvas.before:
+                Color:
+                    rgba: (0.176,0.243,0.384, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        SmoothButton:
+            id: top_button
+            pos_hint: {"x":0.05,"top":0.75}
+            size_hint: 0.9, 0.2
+            font_size: self.width*.073
+            font_name: 'Asana-Math.otf'
+            text: "| J M j\u2081 j\u2082 \u27E9 = \u03A3 C | j\u2081 j\u2082 m\u2081 m\u2082 \u27E9  "
+            bold: True
+            back_color: (0.176,0.243,0.384, 1)
+            on_press:
+                root.topChange(self)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.topBtn(self)
+
+
+
+        SmoothButton:
+            id: bot_button
+            pos_hint: {"x":0.05,"top":0.35}
+            size_hint: 0.9, 0.2
+            font_size: self.width*.073
+            font_name: 'Asana-Math.otf'
+            text: "| j\u2081 j\u2082 m\u2081 m\u2082 \u27E9 = \u03A3 C | J M j\u2081 j\u2082 \u27E9  "
+            bold: True
+            back_color: (0.176,0.243,0.384, 1)
+            on_press:
+                root.botChange(self)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.botBtn(self)
+
+
+
+
+
+
+<TopWindow>:
+    name: "top"
+
+    bigj: bigj
+    bigm: bigm
+    j1: j1
+    j2: j2
+
+    FloatLayout:
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "| J M j\u2081 j\u2082 \u27E9 = \u03A3 C | j\u2081 j\u2082 m\u2081 m\u2082 \u27E9  "
+            pos_hint: {"right":1,"top":1}
+            size_hint: 1, 0.1
+            font_size: self.width*.07
+            color: (0.9, 0.9, 0.91, 1)
+            canvas.before:
+                Color:
+                    rgba: (0.176,0.243,0.384, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "J"
+            pos_hint: {"x":0.33,"y":0.717}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+        TextInput:
+            id: bigj
+            multiline:False
+            input_type: 'number'
+            pos_hint: {"x":0.5,"y":0.717}
+            size_hint: 0.15, 0.083
+            font_size: self.height*0.6
+            background_color: 0.176,0.243,0.384, 0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "M"
+            pos_hint: {"x":0.33,"y":0.578}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+
+        TextInput:
+            id: bigm
+            multiline:False
+            input_type: 'number'
+            pos_hint: {"x":0.5,"y":0.578}
+            size_hint: 0.15, 0.083
+            font_size: self.height*0.6
+            background_color: 0.176,0.243,0.384, 0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "j\u2081"
+            pos_hint: {"x":0.33,"y":0.439}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+        TextInput:
+            id: j1
+            pos_hint: {"x":0.5,"y":0.439}
+            size_hint: 0.15, 0.083
+            input_type: 'number'
+            multiline:False
+            font_size: self.height*0.6
+            background_color: 0.176,0.243,0.384, 0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "j\u2082"
+            pos_hint: {"x":0.33,"y":0.3}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+        TextInput:
+            id: j2
+            multiline:False
+            pos_hint: {"x":0.5,"y":0.3}
+            size_hint: 0.15, 0.083
+            input_type: 'number'
+            font_size: self.height*0.6
+            background_color: 0.176,0.243,0.384, 0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+        SmoothButton:
+            text: "Go Back"
+            font_size: self.width*.1
+            pos_hint: {"x":0.05,"y":0.03}
+            size_hint: 0.43, 0.18
+            back_color: 0.176,0.243,0.384, 1
+            on_press:
+                root.topChangeLeft(self)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.Back(self)
+
+        SmoothButton:
+            text: "Submit"
+            font_size: self.width*.1
+            pos_hint: {"x":0.52,"y":0.03}
+            size_hint: 0.43, 0.18
+            back_color: 0.176,0.243,0.384, 1
+            on_press:
+                root.topChangeRight(self)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.topForw(self)
+
+
+<BottomWindow>:
+    name: "bottom"
+
+    j1: j1
+    j2: j2
+    m1: m1
+    m2: m2
+
+    FloatLayout:
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "| j\u2081 j\u2082 m\u2081 m\u2082 \u27E9 = \u03A3 C | J M j\u2081 j\u2082 \u27E9  "
+            pos_hint: {"right":1,"top":1}
+            size_hint: 1, 0.1
+            font_size: self.width*.07
+            color: (0.9, 0.9, 0.91, 1)
+            canvas.before:
+                Color:
+                    rgba: (0.176,0.243,0.384, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "j\u2081 "
+            pos_hint: {"x":0.35,"y":0.717}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+        TextInput:
+            id: j1
+            multiline:False
+            pos_hint: {"x":0.5,"y":0.717}
+            size_hint: 0.15, 0.083
+            input_type: 'number'
+            font_size: self.height*0.6
+            background_color: 0,0.435,0.725,0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "j\u2082"
+            pos_hint: {"x":0.33,"y":0.578}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+
+        TextInput:
+            id: j2
+            multiline:False
+            pos_hint: {"x":0.5,"y":0.578}
+            size_hint: 0.15, 0.083
+            input_type: 'number'
+            font_size: self.height*0.6
+            background_color: 0,0.435,0.725,0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "m\u2081"
+            pos_hint: {"x":0.33,"y":0.439}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+        TextInput:
+            id: m1
+            pos_hint: {"x":0.5,"y":0.439}
+            size_hint: 0.15, 0.083
+            input_type: 'number'
+            multiline:False
+            font_size: self.height*0.6
+            background_color: 0,0.435,0.725,0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "m\u2082"
+            pos_hint: {"x":0.33,"y":0.3}
+            size_hint: 0.15, 0.083
+            font_size: self.width*0.8
+            color: 0.176,0.243,0.384, 1
+
+        TextInput:
+            id: m2
+            multiline:False
+            pos_hint: {"x":0.5,"y":0.3}
+            size_hint: 0.15, 0.083
+            input_type: 'number'
+            font_size: self.height*0.6
+            background_color: 0,0.435,0.725,0
+            canvas.before:
+                Color:
+                    rgba: 0.176,0.243,0.384, 1
+                Line:
+                    rectangle: (self.pos[0],self.pos[1],self.size[0], self.size[1])
+                    width: 2
+
+        SmoothButton:
+            text: "Go Back"
+            font_size: self.width*.1
+            pos_hint: {"x":0.05,"y":0.03}
+            size_hint: 0.43, 0.18
+            back_color: 0.176,0.243,0.384, 1
+            on_press:
+                root.botChangeLeft(self)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.Back(self)
+
+        SmoothButton:
+            text: "Submit"
+            font_size: self.width*.1
+            pos_hint: {"x":0.52,"y":0.03}
+            size_hint: 0.43, 0.18
+            back_color: 0.176,0.243,0.384, 1
+            on_press:
+                root.botChangeRight(self)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.botForw(self)
+
+
+<TopResultsWindow>:
+    coeffr: coeffr
+    ogr: ogr
+
+
+    name: "topresults"
+
+
+    FloatLayout:
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "| J M j\u2081 j\u2082 \u27E9 = \u03A3 C | j\u2081 j\u2082 m\u2081 m\u2082 \u27E9  "
+            pos_hint: {"right":1,"top":1}
+            size_hint: 1, 0.1
+            font_size: self.width*.07
+            color: (0.9, 0.9, 0.91, 1)
+            canvas.before:
+                Color:
+                    rgba: (0.176,0.243,0.384, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+
+        Label:
+            id: ogr
+            font_name: 'Asana-Math.otf'
+            text: " "
+            pos_hint: {"x":0,"y":0.7}
+            size_hint: 1, 0.2
+            font_size: self.width*.08
+            color: 0.176,0.243,0.384, 1
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            pos_hint: {"x":0.02,"y":0.2}
+            size_hint: 1, 0.4
+
+            Label:
+                id: coeffr
+                size_hint_y: None
+                size_hint_x: 0.97
+                text_size: self.width, None
+                height: self.texture_size[1]
+                font_name: 'Asana-Math.otf'
+                text: ""
+                halign: 'center'
+                font_size: self.width*.08
+                color: 0.176,0.243,0.384, 1
+
+
+        SmoothButton:
+            text: "Go Back"
+            font_size: self.width*.05
+            pos_hint: {"x":0.02,"y":0.03}
+            size_hint: 0.96, 0.17
+            back_color: 0.176,0.243,0.384, 1
+            on_press:
+                root.resBackChange(self)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.resBack(self)
+
+<BottomResultsWindow>:
+    coeffr: coeffr
+    ogr: ogr
+
+
+    name: "botresults"
+
+    FloatLayout:
+
+        Label:
+            font_name: 'Asana-Math.otf'
+            text: "| j\u2081 j\u2082 m\u2081 m\u2082 \u27E9 = \u03A3 C | J M j\u2081 j\u2082 \u27E9  "
+            pos_hint: {"right":1,"top":1}
+            size_hint: 1, 0.1
+            font_size: self.width*.07
+            color: (0.9, 0.9, 0.91, 1)
+            canvas.before:
+                Color:
+                    rgba: (0.176,0.243,0.384, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        Label:
+            id: ogr
+            font_name: 'Asana-Math.otf'
+            text: " "
+            pos_hint: {"x":0,"y":0.7}
+            size_hint: 1, 0.2
+            font_size: self.width*.08
+            color: 0.176,0.243,0.384, 1
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            pos_hint: {"x":0.02,"y":0.2}
+            size_hint: 1, 0.4
+
+            Label:
+                id: coeffr
+                size_hint_y: None
+                size_hint_x: 0.97
+                text_size: self.width, None
+                height: self.texture_size[1]
+                font_name: 'Asana-Math.otf'
+                text: ""
+                halign: 'center'
+                font_size: self.width*.08
+                color: 0.176,0.243,0.384, 1
+
+
+        SmoothButton:
+            text: "Go Back"
+            font_size: self.width*.05
+            pos_hint: {"x":0.02,"y":0.03}
+            size_hint: 0.96, 0.17
+            back_color: 0.176,0.243,0.384, 1
+            on_press:
+                root.resBackChange(self)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.resBack(self)
+
+
+<MyLabel>:
+    text_size: self.size
+    halign: 'center'
+    valign:'center'
+
+
+<-MyPopup>:
+    _container: container
+    GridLayout:
+        padding: '12dp'
+        cols: 1
+        size_hint: None, None
+        pos: root.pos
+        size: root.size
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: root.bg_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            text: root.title
+            color: root.title_color
+            size_hint_y: None
+            height: self.texture_size[1] + dp(16)
+            text_size: self.width - dp(16), None
+            font_size: root.title_size
+            font_name: root.title_font
+            halign: root.title_align
+
+        Widget:
+            size_hint_y: None
+            height: dp(4)
+            canvas.before:
+                Color:
+                    rgba: root.bg_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            canvas:
+                Color:
+                    rgba: root.separator_color
+                Rectangle:
+                    pos: self.x, self.y + root.separator_height / 2.
+                    size: self.width, root.separator_height
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: root.bg_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            id: container
