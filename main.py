@@ -80,7 +80,7 @@ class TopResultsWindow(Screen):
         self.ogr.text = self.og
 
     def resBackChange(self, widget):
-        anim = Animation(size_hint=(0.98, 0.18), pos_hint={"x": 0.01, "y": 0.03}, duration=0.03)
+        anim = Animation(size_hint=(0.98, 0.18), pos_hint={"x": 0.01, "y": 0.02}, duration=0.03)
         anim.start(widget)
 
     def resBack(self, widget):
@@ -132,7 +132,7 @@ class BottomResultsWindow(Screen):
         self.ogr.text = self.og
 
     def resBackChange(self, widget):
-        anim = Animation(size_hint=(0.98, 0.18), pos_hint={"x": 0.01, "y": 0.03}, duration=0.03)
+        anim = Animation(size_hint=(0.98, 0.18), pos_hint={"x": 0.01, "y": 0.02}, duration=0.03)
         anim.start(widget)
 
     def resBack(self, widget):
